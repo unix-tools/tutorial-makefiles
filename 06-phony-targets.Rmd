@@ -96,7 +96,7 @@ Likewise, the `clean` target is also commonly used to remove output files.
 A related example can be found in `06-phony-targets`. It is essentially
 the same example as in `03-various-targets`, but this time we are explicitly
 declaring phony targets:
-```
+```make
 # phony targets
 .PHONY: all clean
 

@@ -176,7 +176,7 @@ output.txt: input.md
 <h3>The <code>clean</code> phony target</h3>
 <p>One very common phony target is the so-called <code>clean</code> target. This target appears in many makefiles to indicate a recipe for “cleaning” a directory from secondary files typically generated after some compilation process.</p>
 <p>Likewise, the <code>clean</code> target is also commonly used to remove output files. A related example can be found in <code>06-phony-targets</code>. It is essentially the same example as in <code>03-various-targets</code>, but this time we are explicitly declaring phony targets:</p>
-<pre><code># phony targets
+<pre class="make"><code># phony targets
 .PHONY: all clean
 
 # all
