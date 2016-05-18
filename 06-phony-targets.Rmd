@@ -7,7 +7,7 @@ author: "Gaston Sanchez"
 >
 > * Understand Phony targets
 > * Declaring phony targets
-> * Introducing the phony target `clean
+> * Introducing the phony target `clean`
 
 -----
 
@@ -57,7 +57,7 @@ To declare a phony target, you have to explicitly declare the target to be
 phony by making it a prerequisite of the special target `.PHONY` as follows:
 ```make
 # declaring phony target
-.PHONY = all
+.PHONY: all
 
 # all
 all: output.html output.tex output.txt

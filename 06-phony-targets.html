@@ -119,7 +119,7 @@ $(document).ready(function () {
 <ul>
 <li>Understand Phony targets</li>
 <li>Declaring phony targets</li>
-<li>Introducing the phony target `clean</li>
+<li>Introducing the phony target <code>clean</code></li>
 </ul>
 </blockquote>
 <hr />
@@ -149,7 +149,7 @@ output.txt: input.md
 <h3>Declaring phony targets</h3>
 <p>To declare a phony target, you have to explicitly declare the target to be phony by making it a prerequisite of the special target <code>.PHONY</code> as follows:</p>
 <pre class="make"><code># declaring phony target
-.PHONY = all
+.PHONY: all
 
 # all
 all: output.html output.tex output.txt
