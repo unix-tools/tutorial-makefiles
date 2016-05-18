@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<h1 id="regression-analysis">Regression Analysis</h1>
+<p>We generated some random data with <code>x</code> and <code>y</code> vectors.</p>
+<p>Then we calculate a regression model regressing <code>y</code> on <code>x</code>.</p>
+<p>The following figure shows the scatter plot with x-y points and the obtained regression line:</p>
+<div class="figure">
+<img src="scatterplot.png" alt="Sccater plot with regression line" />
+<p class="caption">Sccater plot with regression line</p>
+</div>
+<h2 id="model">Model</h2>
+<p>The results of the obtained regression model are:</p>
+<pre><code>Call:
+lm(formula = y ~ x)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1.7578 -0.3212 -0.0636  0.4626  1.2640 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -0.03954    0.17116  -0.231 0.819912    
+x            0.70937    0.18076   3.924 0.000994 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.7581 on 18 degrees of freedom
+Multiple R-squared:  0.4611,    Adjusted R-squared:  0.4312 
+F-statistic:  15.4 on 1 and 18 DF,  p-value: 0.0009937
+</code></pre>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# mac stuff
+.DS_Store
+
+# latex
+*.aux
+*.log
+*.toc
+
+# R
+*.Rout

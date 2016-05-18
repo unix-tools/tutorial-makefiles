@@ -1,0 +1,92 @@
+---
+title: "Dependent Targets"
+author: "Gaston Sanchez"
+---
+
+> ### Learning Objectives
+>
+> * Defining targets that depend on other targets
+> * Write a Makefile with various dependent targets
+
+-----
+
+
+### More than one target
+
+All of the previous examples have been about Makefiles that use one or more 
+independent targets.
+
+Now let's consider a couple of targets in which some of them play the role
+of dependencies for other targets.
+
+In this case we will work with a toy data analysis in R. More specifically,
+we will perform a regresison analysis on simulated data.
+
+
+
+### Toy Regression in R
+
+The code of the analysis is:
+```r
+# random data
+set.seed(754321)
+x <- rnorm(20)
+y <- x + rnorm(20)
+
+# regression line
+reg <- lm(y ~ x)
+summary(reg)
+
+# scatter diagram with fitted regression line
+plot(x, y, las = 1, pch = 19, col = "#555555")
+abline(reg, col = "#0000DD70", lwd = 3)
+```
+
+For illustration purposes, the previous code has been split into
+three R scripts, each producing an output file:
+
+| `regression-data.R` > `regression.RData`
+| `regression-model.R` > `regression-model.md`
+| `regression-plot.R` > `scatterplot.png`
+
+You can see the files of this example in the folder `04-dependent-targets/`
+
+
+### Input and Output files
+
+- `regression-data.R` generates the random vectors, fits the regression
+model, and sends the data and the model to a binary file `regression.RData`
+
+- `regression-model.R` reads in the regression data, and then
+sends the summary of the regression object to the file `regression-model.md`
+
+- `regression-plot.R` reads in the regression data, and creates a scatter plot
+that is saved in the file `scatterplot.png`
+
+- The main output is the file `regression.html` which depends directly on 
+`report.md`, and `regression-model.md` 
+
+- The file `report.md`, in turn, uses `scatterplot.png`
+
+
+### Makefile
+
+Here's the content of the `Makefile`:
+```make
+all: regression.html
+
+regression.html: report.md regression-model.md scatterplot.png
+	pandoc report.md regression-model.md -s -o regression.html
+
+scatterplot.png: regression-plot.R regression.RData
+	Rscript regression-plot.R
+
+regression-model.md: regression-model.R regression.RData
+	Rscript regression-model.R
+
+regression.RData: regression-data.R
+	Rscript regression-data.R
+```
+
+-----
+
