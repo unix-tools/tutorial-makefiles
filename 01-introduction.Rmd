@@ -44,7 +44,7 @@ target: dependency
 For instance, let's say you want to generate an html document `output.html`
 from a source markdown file `input.md`, generated with [pandoc](http://pandoc.org/). 
 The Make rule in this case would be:
-```bash
+```make
 # from markdown to html
 output.html: input.md
 	pandoc input.md -s -o output.html
@@ -95,3 +95,9 @@ See the files in `01-minimal/` inside the `examples/` folder to
 play with a minimal makefile.
 
 ------
+
+### Make documentation:
+
+[What a rule looks like](https://www.gnu.org/software/make/manual/html_node/Rule-Introduction.html#Rule-Introduction)
+
+-----

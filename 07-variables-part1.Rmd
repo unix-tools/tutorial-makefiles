@@ -163,3 +163,9 @@ Likewise, if we decide to rename `input.md` with a new name, we just need
 to modify the value of the variable `IN`.
 
 -----
+
+### Make Documentation
+
+[Variables Simplify](https://www.gnu.org/software/make/manual/html_node/Variables-Simplify.html#Variables-Simplify)
+
+-----

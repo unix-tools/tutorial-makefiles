@@ -129,3 +129,11 @@ if the `output.*` files do not exists.
 Also note that `clean` has no dependencies. Therefore, the target `clean` will
 be always out-of-date. So whenever you run `make clean`, it will run
 independent from the state of the file system.
+
+-----
+
+### Make Documentation
+
+[Phony Targets](https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html#Phony-Targets)
+
+-----
