@@ -1,0 +1,163 @@
+---
+title: "Pattern Substitutions"
+author: "Gaston Sanchez"
+---
+
+> ### Learning Objectives
+>
+> * Basics of pattern substitutions
+> * Use the `wildcard` function
+> * Use  the `%` operator
+
+-----
+
+
+### Motivation
+
+Let's consider the example used in the previous two lessons. This involves
+executing four R scripts---`script1.R`, `script2.R`, `script3.R`, `script4.R`---
+in batch mode via the command `R CMD BATCH --no-save`.
+
+
+We've seen the naive option of writing a `Makefile` like this:
+```make
+.PHONY: all clean
+
+all: script1.Rout script2.Rout script3.Rout script4.Rout
+
+script1.Rout: script1.R
+	R CMD BATCH --no-save script1.R
+
+script2.Rout: script2.R
+	R CMD BATCH --no-save script2.R
+
+script3.Rout: script3.R
+	R CMD BATCH --no-save script3.R
+
+script4.Rout: script4.R
+	R CMD BATCH --no-save script4.R
+
+clean:
+	rm -f *.Rout
+```
+
+A makefile like the one above is obviously not very efficient. Instead,
+we can define a variable `rcmd` that refers to the R command in each recipe.
+
+Likewise, we can use a pattern rule for all the targets:
+```make
+%.Rout: %.R
+	$(rcmd) $<
+```
+
+All the previous elements can be combined in the following makefile:
+```make
+rcmd = R CMD BATCH --no-save
+
+.PHONY: all clean
+
+all: script1.Rout script2.Rout script3.Rout script4.Rout
+
+%.Rout: %.R
+	$(rcmd) $<
+
+clean:
+	rm -f *.Rout
+```
+
+As you can tell, the only part that still has some repetition has to do
+with the prerequisites of the target `all` (i.e. all the `.Rout` files).
+
+It would be nice if you could group all the `.Rout` in one single variable.
+Let's see how to do this.
+
+
+### Using the wildcard function
+
+Remember _Make_'s wildcard function? We can use it to define a variable with
+the list of input `.R` files:
+```make
+rfiles = $(wildcard *.R)
+```
+
+The good news is that we have a variable `rfiles` that contains the names
+of all the R script files. The problem now is how to take advantage of
+`rfiles`?
+
+You may be tempted to do something like this (with some tragic consequences):
+```make
+rcmd = R CMD BATCH --no-save
+rfiles = $(wildcard *.R)
+
+$(rfiles)out: $(rfiles)
+	$(rcmd) $(rfiles)
+```
+
+
+### Using Pattern Substitution
+
+To create a variable that contains the name of the `.Rout` files, we are
+going to use the function __patsubst__ (for pattern substitution).
+
+The idea is to take advantage of the variable `rfiles`---which has the value:
+`script1.R script2.R script3.R script4.R`---and define a __pattern of characters
+to be substituted__. 
+
+The function `patsubst` has the following usage:
+```
+$(patsubst pattern,replacement,text)
+```
+
+`patsubst` finds whitespace-separated words in `text` that match the 
+provided `pattern` and replaces them with the specified `replacement`. 
+
+A `pattern` may contain a `%` which acts as a wildcard, matching any number 
+of any characters within a word. If `replacement` also contains a `%`, 
+the `%` is replaced by the text that matched the `%` in `pattern`. 
+Only the first `%` in the pattern and replacement is treated this way; 
+any subsequent `%` is unchanged.
+
+In our example, we can use `patsubst` to create the variable `rout` like thi:
+
+```make
+rfiles = $(wildcard *.R)
+
+rout = $(patsubst %.R,%.Rout,$(rfiles))
+```
+
+- `%.R` is the pattern to be match in the provided _text_
+- `$(rfiles)` is the provided _text_ (i.e. `script1.R script2.R script3.R script4.R`)
+- `%.Rout` is the replacement
+
+In other words, `patsubst` will look for the pattern `.R` in `rfiles`,
+and will replace the pattern with `.Rout`. This implies that `rout` will
+be a text formed by: `script1.Rout script2.Rout script3.Rout script4.Rout`.
+
+Having obtained the variable `rout` with the list of output files, we can 
+complete the `Makefile` as follows:
+
+```make
+rcmd = R CMD BATCH --no-save
+rfiles = $(wildcard *.R)
+
+rout = $(patsubst %.R,%.Rout,$(rfiles))
+
+all: $(rout)
+
+%.Rout: %.R
+	$(rcmd) $<
+
+clean:
+	rm -f *.Rout
+```
+
+Note that the variable `rout` is used as the prerequisite of the target `all`.
+You don't need to write a long list of prequisites for `all`.
+
+-----
+
+### Make Documentation
+
+[Functions for String Substitution and Analysis](https://www.gnu.org/software/make/manual/html_node/Text-Functions.html#Text-Functions)
+
+-----
