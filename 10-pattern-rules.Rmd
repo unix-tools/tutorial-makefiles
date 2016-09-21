@@ -148,7 +148,7 @@ Moreover, you can add more scripts---e.g. `script5.R`, `script6.R`, etc---
 and the pattern rule will still apply for any number of R files.
 
 As you can tell, pattern rules are very convenient, and are one of
- _Make_'s features that saves youy from defining some kind of loop that
+ _Make_'s features that saves you from defining some kind of loop that
  iterates over many files.
 
 -----
