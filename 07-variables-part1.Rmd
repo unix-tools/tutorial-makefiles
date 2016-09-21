@@ -77,29 +77,35 @@ IMG = histogram.png
 
 #### Naming variables
 
-A variable name may be any sequence of characters not containing `:', `#', `=', 
+A variable name may be any sequence of characters not containing `:`, `#`, `=', 
 or leading or trailing whitespace. However, variable names containing 
 characters other than letters, numbers, and underscores should be avoided,
 as they may be given special meanings in the future.
 
 __OK names:__
 
-| `objects`
-| `var`
-| `DIR`
-| `SUBDIR`
+```
+objects
+var
+DIR
+SUBDIR
+```
 
 __Should be avoided:__
 
-| `objs1`
-| `my_var`
-| `123`
+```
+objs1
+my_var
+123
+```
 
 __Invalid names:__
 
-| `objs#`
-| `my=var`
-| `SUB:DIR`
+```
+objs#
+my=var
+SUB:DIR
+```
 
 
 It is traditional to use upper case letters in variable names, and most
