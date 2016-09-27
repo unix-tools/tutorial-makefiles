@@ -81,7 +81,7 @@ If everything went ok, you should be able to see the generated output file
 Every time you make changes to the input file, you can run `make` again 
 to build a new version of `output.html`.
 
-Once you `output.html` is built, if run `make` again---without new changes
+Once `output.html` is built, if you run `make` again---without new changes
 made in `input.md`---Make will display a message like this one:
 ```
 make: `output.html' is up to date.
