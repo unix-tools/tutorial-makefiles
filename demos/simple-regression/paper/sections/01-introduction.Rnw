@@ -1,0 +1,2 @@
+\section{Introduction}
+This is just a minimal example of a simple regression analysis in R. The goal is to practice creating a reproducible report using several tools such as Makefile, R, knitr, Rnw files, plots, etc.

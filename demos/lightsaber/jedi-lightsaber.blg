@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: jedi-lightsaber.aux
+The style file: unsrt.bst
+Database file #1: refs.bib.bib
+You've used 2 entries,
+            1791 wiz_defined-function locations,
+            456 strings with 3773 characters,
+and the built_in function-call counts, 297 in all, are:
+= -- 24
+> -- 9
+< -- 0
++ -- 4
+- -- 2
+* -- 8
+:= -- 47
+add.period$ -- 6
+call.type$ -- 2
+change.case$ -- 1
+chr.to.int$ -- 0
+cite$ -- 2
+duplicate$ -- 15
+empty$ -- 38
+format.name$ -- 2
+if$ -- 70
+int.to.chr$ -- 0
+int.to.str$ -- 2
+missing$ -- 2
+newline$ -- 13
+num.names$ -- 1
+pop$ -- 14
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 6
+stack$ -- 0
+substring$ -- 0
+swap$ -- 2
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 1
+width$ -- 3
+write$ -- 22

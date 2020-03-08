@@ -1,0 +1,62 @@
+% $ biblatex auxiliary file $
+% $ biblatex version 2.5 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\entry{ductavis}{book}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Ductavis}{D.}%
+     {Grand Master~Biel}{G.~M.~B.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Jedi Temple Editions}%
+  }
+  \strng{namehash}{DGMB1}
+  \strng{fullhash}{DGMB1}
+  \field{sortinit}{D}
+  \field{title}{How to Become a Jedi}
+  \list{location}{1}{%
+    {Coruscant}%
+  }
+  \field{year}{10966 BBY}
+\endentry
+
+\entry{yoda}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Yoda}{Y.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{Y1}
+  \strng{fullhash}{Y1}
+  \field{sortinit}{Y}
+  \field{pages}{75\bibrangedash 83}
+  \field{title}{Do. Or do not. There is no try.}
+  \field{volume}{6}
+  \field{journaltitle}{Journal of the Jedi Order}
+  \field{month}{06}
+  \field{year}{1999}
+\endentry
+
+\lossort
+\endlossort
+
+\endinput

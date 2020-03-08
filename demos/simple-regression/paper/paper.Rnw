@@ -1,0 +1,63 @@
+\documentclass{article}
+
+% latex packages
+\usepackage{graphicx}
+\usepackage[margin=0.75in]{geometry}
+\usepackage[backend=bibtex]{biblatex}
+\addbibresource{refs.bib}
+
+% title information
+\title{Simple Regression}
+\author{Gaston Sanchez}
+\date{}
+
+\begin{document}
+\maketitle
+
+<<packages, echo = FALSE>>=
+library(xtable)
+@
+
+\begin{abstract}
+We analyzed the relationship between height and weight of some inviduals from a galaxy far, far away.
+\end{abstract}
+
+<<introduction, child='sections/01-introduction.Rnw', eval=TRUE>>=
+@
+
+\section{Data}
+We curated a data set from the wookieepedia. Current descriptions in the website do not longer contain information about weight.
+
+<<data_set, echo=FALSE, results='asis', message=FALSE>>=
+sw <- read.csv("../data/clean_data/starwars_clean.csv")
+#print(xtable(sw), comment = FALSE, table.placement = 'H',
+#      include.rownames = FALSE)
+xtable(sw)
+@
+
+There are \Sexpr{nrow(sw)} individuals, with an average height of \Sexpr{mean(sw$height)} cms, and an average weight of \Sexpr{mean(sw$weight)} kgs. The summary statistics are displayed in the table below:
+<<summary_stats, echo = FALSE, results='asis'>>=
+stats <- summary(sw[,c('height','weight')])
+xtable(stats)
+@
+
+\subsection{EDA}
+We looked at the distributions of height and weight. As suggested by \cite{ductavis}, this relation is almost perfectly linear among human Jedis.
+
+\begin{figure}[h!]
+\includegraphics[width=1\textwidth]{../images/histograms.pdf}
+\end{figure}
+
+There is a strong linear relationship between height and weight. This is evidenced in the scatterplot, and calculation the correlation \Sexpr{cor(sw$height, sw$weight)}.
+
+\begin{figure}[h!]
+    \centering
+	\includegraphics[width=0.9\textwidth]{../images/scatterplot.pdf}
+\end{figure}
+
+\section{Conclusions}
+Our analysis agrees with Yoda's seminal article \cite{yoda}. But more work needs to be carried out like collecting additional samples in future surveys. May the Force be with you.
+
+
+\printbibliography
+\end{document}
