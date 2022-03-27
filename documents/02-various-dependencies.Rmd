@@ -1,6 +1,7 @@
 ---
 title: "Multiple Dependencies"
 author: "Gaston Sanchez"
+output: github_document
 ---
 
 > ### Learning Objectives
@@ -15,17 +16,20 @@ author: "Gaston Sanchez"
 
 In the introduction, we talked about the concept of Make rules, and we
 described the conceptual structure of a rule:
+
 ```make
 target: dependencies ...
 	commands
 	...
 ```
+
 A __rule__ tells Make how to execute a series of commands in order to build
 a __target__ file from source files (i.e. the __dependencies__)
 
 
-Our fisrt example was very simple, formed with one rule consisting of
+Our first example was very simple, formed with one rule consisting of
 a target file `output.html` and one dependency `input.md`
+
 ```bash
 output.html: input.md
 	pandoc input.md -s -o output.html
@@ -43,6 +47,7 @@ but now there are three dependencies: `first.md`, `second.md`, and `third.md`.
 We'll use [pandoc](http://pandoc.org/) again to generate the html output file.
 One of the nice things about pandoc is that you can pass any number of 
 input files and it will concatenate them to produce the output:
+
 ```
 output.html: first.md second.md third.md
 	pandoc first.md second.md third.md -s -o output.html
@@ -50,6 +55,7 @@ output.html: first.md second.md third.md
 
 The pandoc command can actually be shorten using the asterisk wildcard to
 indicate all the input files with extension `.md`:
+
 ```
 output.html: first.md second.md third.md
 	pandoc *.md -s -o output.html

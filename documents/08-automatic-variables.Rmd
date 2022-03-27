@@ -1,6 +1,7 @@
 ---
 title: "Automatic Variables in Make"
 author: "Gaston Sanchez"
+output: github_document
 ---
 
 > ### Learning Objectives
@@ -14,27 +15,29 @@ author: "Gaston Sanchez"
 
 ### Motivation
 
-Let's go back to the first example in `01-minimal/` where we have one single source
-file `input.md` that `pandoc` converts into the html file `output.html`:
+Let's go back to the first example in `01-minimal/` where we have one single 
+source file `input.md` that `pandoc` converts into the html file `output.html`:
+
 ```make
 # from markdown to html
 output.html: input.md
 	pandoc input.md -s -o output.html
 ```
 
-The makefile contains one rule with one target file, one dependency, and a recipe
-formed by one command.
+The makefile contains one rule with one target file, one dependency, and a 
+recipe formed by one command.
 
-This is a very simple example but it serves perfectly to illustrate the use of a
-special type of _Make_ variables called __automatic variables__.
+This is a very simple example but it serves perfectly to illustrate the use of 
+a special type of _Make_ variables called __automatic variables__.
 
 Notice that the string `output.html` appears in both the target, and also in 
 the command of the recipe. Likewise, the string `input.md` appears in the
 prerequisite as well as in the command of the recipe.
 
-To saving typing and start avoiding repetition, _Make_ provides a handful of special
-variables that you can use in a recipe. Here's how we can rewrite the rule in a more
-compact---but cryptic---way:
+To saving typing and start avoiding repetition, _Make_ provides a handful of 
+special variables that you can use in a recipe. Here's how we can rewrite the 
+rule in a more compact---but cryptic---way:
+
 ```make
 # from markdown to html
 output.html: input.md
@@ -46,6 +49,7 @@ __What is happening?__. We replaced `input.md` with the variable `$<`, and
 following meanings:
 
 - `$<` is the automatic variable whose value is the name of the first prerequisite.
+
 - `$@` is the automatic variable whose value is the name of the target.
 
 
@@ -61,9 +65,13 @@ by another character. Here's a list with some of the most common types of
 automatic variables:
 
 - `$@` the file name of the __target__
+
 - `$%` the target member name
+
 - `$<` the name of the __first prerequisite__
+
 - `$?` the names of all the prerequisites that are newer than the target
+
 - `$^` the names of all the prerequisites, with spaces between them.
 
 As mentioned in _Make_ manual, you cannot use automatic variables "anywhere 
@@ -77,6 +85,7 @@ the empty string."
 Let's check the `Makefile` of `04-dependent-targets/`. In this example we
 create an html report of a regression analysis in R. There is one main target 
 `regression.html` that depends on a series of prerequisite files:
+
 ```make
 all: regression.html
 

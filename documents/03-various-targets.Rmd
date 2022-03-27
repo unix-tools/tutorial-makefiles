@@ -1,6 +1,7 @@
 ---
 title: "Multiple Targets"
 author: "Gaston Sanchez"
+output: github_document
 ---
 
 > ### Learning Objectives
@@ -15,6 +16,7 @@ author: "Gaston Sanchez"
 ### More than one target
 
 So far we've been working with makefiles containing only one target:
+
 ```make
 target: dependencies ...
 	commands
@@ -22,6 +24,7 @@ target: dependencies ...
 ```
 
 However, we can have multiple rules, each one with its own target:
+
 ```make
 target1: dependencies ...
 	commands
@@ -63,11 +66,13 @@ first target (this is the default behavior of Make).
 To run a specific target, call the `make` command followed by the name
 of the target you want to be generated. So, if you want to create the
 latex file, here's how to call `make`
+
 ```bash
 make output.tex
 ```
 
-If you want to generate the reStrcuturedText:
+If you want to generate the _reStructuredText_:
+
 ```bash
 make output.txt
 ```

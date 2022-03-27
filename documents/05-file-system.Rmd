@@ -1,6 +1,7 @@
 ---
 title: "File System"
 author: "Gaston Sanchez"
+output: github_document
 ---
 
 > ### Learning Objectives
@@ -45,13 +46,16 @@ at the level of the parent directory (i.e. `05-file-system/`)
 
 To generate the output `R-project.html` file from the 3 `.md` files, you would
 have to `cd` into `sections/` and then run __pandoc__ like so:
+
 ```bash
 pandoc *.md -s -o R-project.html
 ```
 
+
 But remember that we want `R-project.html` to be at the parent level. Assuming
 that you are inside `sections/`, you would need to `mv` the output file
 `R-project.html` one level up:
+
 ```bash
 mv R-project.html ../
 ```
@@ -59,11 +63,12 @@ mv R-project.html ../
 
 ### The Makefile
 
-How do you tell Make to switch between subdirectories and move files to 
+How do you tell Make to switch between sub-directories and move files to 
 different locations? Very easy: using shell commands to navigate the file 
 system.
 
 Here's how the `Makefile` looks like:
+
 ```make
 all: R-project.html
 
@@ -73,10 +78,12 @@ R-project.html: sections/01-intro.md sections/02-environment.md sections/03-logo
 ```
 
 Important things to keep in mind: the `Makefile` lives at the top level.
-All dependencies are in the `sections/` subdirectory.
+All dependencies are in the `sections/` sub-directory.
 
 - `R-project.html` is the target file
+
 - The dependencies are the markdown files inside the `sections/` folder
+
 - The recipe involves two commands:
 	+ first we `cd` into `sections/` and then call `pandoc`
 	+ then we `cd` again into `sections/` and `mv` the target file one level up
@@ -86,9 +93,11 @@ the `Makefile` is. This is why we need to `cd` into `sections/` in order to
 run pandoc. 
 
 Note the use of the semicolon in the command:
+
 ```bash
 cd sections; pandoc *.md -s -o R-project.html
 ```
+
 the semicolon lets us group several related instructions in one single line.
 
 
@@ -100,6 +109,7 @@ PNG files of the R logos are located.
 
 Those logos are used inside the file `03-logo.md`. If you take a look at this
 file, you will see a couple of lines like these:
+
 ```
 ### Old and New Logos
 
@@ -116,8 +126,5 @@ top level, and this is exactly where `images/` is located too. In this way
 `R-project.html` can load correctly the R logos.
 
 -----
-
-
-
 
 

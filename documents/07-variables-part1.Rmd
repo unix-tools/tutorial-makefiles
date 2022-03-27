@@ -1,6 +1,7 @@
 ---
 title: "Variables in Make"
 author: "Gaston Sanchez"
+output: github_document
 ---
 
 > ### Learning Objectives
@@ -67,7 +68,8 @@ Variables can represent:
 Variables are defined at the beginning of the `Makefile` by specifying
 the name of the variable, followed by an assignment operator (`=` or `:=`), 
 and the variable's value. Here's an example of how you could define a couple 
-of variables: 
+of variables:
+
 ```make
 # variables
 data = dataset.csv
@@ -77,7 +79,7 @@ IMG = histogram.png
 
 #### Naming variables
 
-A variable name may be any sequence of characters not containing `:`, `#`, `=', 
+A variable name may be any sequence of characters not containing `:`, `#`, `=`, 
 or leading or trailing whitespace. However, variable names containing 
 characters other than letters, numbers, and underscores should be avoided,
 as they may be given special meanings in the future.

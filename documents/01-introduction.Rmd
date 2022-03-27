@@ -1,6 +1,7 @@
 ---
 title: "Introduction"
 author: "Gaston Sanchez"
+output: github_document
 ---
 
 > ### Learning Objectives
@@ -25,6 +26,7 @@ To work with Make you write a text file with the name `Makefile`,
 typically referred to as the _makefile_.
 
 A makefile is formed with __rules__ that have the following structure:
+
 ```make
 target: dependencies ...
 	commands
@@ -36,6 +38,7 @@ a __target__ file from source files (i.e. the __dependencies__).
 Notice that the recipe line(s) must be indented with a TAB and not with any spaces.
 
 Under its most basic form, a rule usually has this structure:
+
 ```make
 target: dependency
 	command
@@ -44,6 +47,7 @@ target: dependency
 For instance, let's say you want to generate an html document `output.html`
 from a source markdown file `input.md`, generated with [pandoc](http://pandoc.org/). 
 The Make rule in this case would be:
+
 ```make
 # from markdown to html
 output.html: input.md
@@ -51,12 +55,17 @@ output.html: input.md
 ```
 
 - the first line is a comment (comments are defined with `#`)
+
 - `output.html` is the target file
+
 - `input.md` is the dependency
+
 - `pandoc input.md -s -o output.html` is the command to build the target
+
 
 You can have a directory `make-test/` containing the source file `input.md` 
 and the makefile `Makefile`:
+
 ```
 make-test/
 	input.md
@@ -65,17 +74,19 @@ make-test/
 
 Assuming that you are inside the directory `make-test`, in order to build 
 the target file `output.html`, you simply call `make` from the command line:
+
 ```bash
 make
 ```
 
 The very first time you run `make`, you should be able to see in the command
 line the command that was executed:
+
 ```
 pandoc input.md -s -o output.html
 ```
 
-If everything went ok, you should be able to see the generated output file
+If everything went okay, you should be able to see the generated output file
 `output.html`.
 
 Every time you make changes to the input file, you can run `make` again 
@@ -83,6 +94,7 @@ to build a new version of `output.html`.
 
 Once `output.html` is built, if you run `make` again---without new changes
 made in `input.md`---Make will display a message like this one:
+
 ```
 make: `output.html' is up to date.
 ``` 

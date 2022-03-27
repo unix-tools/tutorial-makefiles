@@ -1,6 +1,7 @@
 ---
 title: "Pattern Rules"
 author: "Gaston Sanchez"
+output: github_document
 ---
 
 > ### Learning Objectives
@@ -22,6 +23,7 @@ We are going to expand that example by going one step further. All the R
 script files are in the folder example `10-pattern-rules/`. Now the goal
 is to execute each of those files individually, by using the command 
 `R CMD BATCH --no-save`. For instance:
+
 ```bash
 R CMD BATCH --no-save script1.R
 ```
@@ -34,6 +36,7 @@ an output file `script1.Rout` will be generated.
 So, how do you tell _Make_ to run all the R files?
 
 One naive option would be to do something like this:
+
 ```make
 .PHONY: all clean
 
@@ -60,6 +63,7 @@ Again, there's a lot of repetition. We can start creating a variable that
 holds the value for the R command `R CMD BATCH --no-save`. In addition,
 we can use the automatic variable `$<` for the name of the prerequisite
 in each recipe:
+
 ```make
 rcmd = R CMD BATCH --no-save
 
@@ -92,6 +96,7 @@ there's more that can be done.
 
 If you look at the rules, they all have a similar structure. Consider the 
 rule for the first script:
+
 ```make
 script1.Rout: script1.R
 	R CMD BATCH --no-save script1.R
@@ -106,6 +111,7 @@ Well, it turns out that you can!
 
 _Make_ allows you to create pattern rules using the character `%`. Here's
 an example:
+
 ```make
 %.Rout: %.R
 	$(rcmd) $<
@@ -127,6 +133,7 @@ can be made. These files become prerequisites of the target.
 
 Using pattern rules, we can rewrite the `Makefile` and get a compact
 version like the following one:
+
 ```make
 rcmd = R CMD BATCH --no-save
 

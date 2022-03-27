@@ -1,6 +1,7 @@
 ---
 title: "Dependent Targets"
 author: "Gaston Sanchez"
+output: github_document
 ---
 
 > ### Learning Objectives
@@ -20,13 +21,14 @@ Now let's consider a couple of targets in which some of them play the role
 of dependencies for other targets.
 
 In this case we will work with a toy data analysis in R. More specifically,
-we will perform a regresison analysis on simulated data.
+we will perform a regression analysis on simulated data.
 
 
 
 ### Toy Regression in R
 
 The code of the analysis is:
+
 ```r
 # random data
 set.seed(754321)
@@ -72,6 +74,7 @@ that is saved in the file `scatterplot.png`
 ### Makefile
 
 Here's the content of the `Makefile`:
+
 ```make
 all: regression.html
 

@@ -1,6 +1,7 @@
 ---
 title: "Phony Targets"
 author: "Gaston Sanchez"
+output: github_document
 ---
 
 > ### Learning Objectives
@@ -22,6 +23,7 @@ There are occasions, however, when a given target is not really a file,
 but simply the name of a recipe (i.e. an action to be performed).
 One example is the `all` target like the one in `03-various-targets/`. 
 The associate `Makefile` is:
+
 ```make
 # all
 all: output.html output.tex output.txt
@@ -55,6 +57,7 @@ an explicit request.
 
 To declare a phony target, you have to explicitly declare the target to be 
 phony by making it a prerequisite of the special target `.PHONY` as follows:
+
 ```make
 # declaring phony target
 .PHONY: all
@@ -78,6 +81,7 @@ output.txt: input.md
 Declaration of phony targets is important because of two main reasons:
 
 1. to avoid a conflict with a file of the same name, and 
+
 2. to improve performance
 
 Confusion may be caused when the name of an existing file is used as the
@@ -96,6 +100,7 @@ Likewise, the `clean` target is also commonly used to remove output files.
 A related example can be found in `06-phony-targets`. It is essentially
 the same example as in `03-various-targets`, but this time we are explicitly
 declaring phony targets:
+
 ```make
 # phony targets
 .PHONY: all clean
