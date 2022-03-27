@@ -7,16 +7,30 @@ and creating dynamic documents.
 The material expands on Chris Paciorek's 
 [tutorial-make-flows](https://github.com/berkeley-scf/tutorial-make-workflows)
 
-Examples:
+Content:
 
-- Markdown to HTML using pandoc
-- R script with input data file and
-- Standalone R script (minimal regression analysis and plots)
-- Generating pdf document from LaTex files
-- Generating pdf document from Rnw file
-- Generating html document from Rmd file
-- Generating pdf document from Rmd file
-- Minimal Dynamic Document (R code, plots, tables)
+- [Introduction](documents/01-introduction.md)
+
+- [Various Dependencies](documents/02-various-dependencies.md)
+
+- [Various Targets](documents/03-various-targets.md)
+
+- [Dependent Targets](documents/04-dependent-targets.md)
+
+- [File System](documents/05-file-system.md)
+
+- [Phony Targets](documents/06-phony-targets.md)
+
+- [Variables (part 1)](documents/07-variables-part1.md)
+
+- [Automatic Variables](documents/08-automatic-variables.md)
+
+- [Wildcard Function](documents/09-wildcard-function.md)
+
+- [Pattern Rules](documents/10-pattern-rules.md)
+
+- [Pattern Substitutions](documents/11-pattern-substitutions.md)
+
 
 
 ### References
@@ -45,4 +59,15 @@ Justin Ellingwood)
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
-Author: [Gaston Sanchez](http://gastonsanchez.com)
+
+### Donation
+
+As a Data Science and Statistics educator, I love to share the work I do.
+Each month I spend dozens of hours curating learning materials like this tutorial.
+If you find any value and usefulness in it, please consider making 
+a <a href="https://www.paypal.com/donate?business=ZF6U7K5MW25W2&currency_code=USD" target="_blank">one-time donation---via paypal---in any amount</a> (e.g. the amount you would spend inviting me a coffee or any other drink). Your support really matters.
+
+<a href="https://www.paypal.com/donate?business=ZF6U7K5MW25W2&currency_code=USD" target="_blank"><img src="https://www.gastonsanchez.com/images/donate.png" width="140" height="60"/></a>
+
+
+Author: [Gaston Sanchez](https://www.gastonsanchez.com)
